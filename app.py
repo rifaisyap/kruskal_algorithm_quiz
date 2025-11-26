@@ -22,11 +22,11 @@ if not st.session_state.quiz_started:
 if not st.session_state.quiz_started:
     st.stop()
 
-# Insert Image
+# Insert Image (used only for Q1 now)
 st.write("---")
-st.subheader("Graph for Questions 1 & 2")
+st.subheader("Graph Reference")
 st.image("image.png", width=600)
-st.write("Refer to the graph above to answer Questions **1** and **2**.")
+st.write("Refer to the graph above for **Question 1**.")
 
 # Question 1
 st.markdown("### **1. Which edge is the *first* added to the MST using Kruskal’s Algorithm?**")
@@ -41,24 +41,24 @@ q1_options = [
 correct_q1 = "D. Edge (1, 4) with weight 1"
 
 q1 = st.radio(
-    "",  
+    "",
     q1_options,
     index=None,
     key="q1"
 )
 
-# Question 2
+# Question 2 (original Q3)
 st.write("---")
-st.markdown("### **2. What is the TOTAL weight of the Minimum Spanning Tree (MST)?**")
+st.markdown("### **2. Which data structure is used to detect cycles in Kruskal’s Algorithm?**")
 
 q2_options = [
-    "A. 42",
-    "B. 21",
-    "C. 15",
-    "D. 17",
+    "A. Stack",
+    "B. Queue",
+    "C. Union–Find (Disjoint Set)",
+    "D. Binary Tree",
 ]
 
-correct_q2 = "D. 17"
+correct_q2 = "C. Union–Find (Disjoint Set)"
 
 q2 = st.radio(
     "",
@@ -67,44 +67,24 @@ q2 = st.radio(
     key="q2"
 )
 
-# Question 3
+# Question 3 (original Q4)
 st.write("---")
-st.markdown("### **3. Which data structure is used to detect cycles in Kruskal’s Algorithm?**")
+st.markdown("### **3. Which statement correctly describes Kruskal’s Algorithm?**")
 
 q3_options = [
-    "A. Stack",
-    "B. Queue",
-    "C. Union–Find (Disjoint Set)",
-    "D. Binary Tree",
-]
-
-correct_q3 = "C. Union–Find (Disjoint Set)"
-
-q3 = st.radio(
-    "",
-    q3_options,
-    index=None,
-    key="q3"
-)
-
-# Question 4
-st.write("---")
-st.markdown("### **4. Which statement correctly describes Kruskal’s Algorithm?**")
-
-q4_options = [
     "A. It starts from one node and expands outward.",
     "B. It selects edges with the largest weight first.",
     "C. It is a greedy algorithm used to build an MST.",
     "D. It only works for directed graphs.",
 ]
 
-correct_q4 = "C. It is a greedy algorithm used to build an MST."
+correct_q3 = "C. It is a greedy algorithm used to build an MST."
 
-q4 = st.radio(
+q3 = st.radio(
     "",
-    q4_options,
+    q3_options,
     index=None,
-    key="q4"
+    key="q3"
 )
 
 # Submit button
@@ -140,18 +120,9 @@ if st.button("✅ Submit Answers"):
         st.error(f"✘ Incorrect. You chose: {q3}")
         st.info(f"Correct answer: **{correct_q3}**")
 
-    # Question 4
-    st.markdown("### **Question 4**")
-    if q4 == correct_q4:
-        st.success("✔ Correct!")
-        score += 1
-    else:
-        st.error(f"✘ Incorrect. You chose: {q4}")
-        st.info(f"Correct answer: **{correct_q4}**")
-
     # Final Score
     st.write("---")
-    st.markdown(f"## 🎯 Final Score: **{score} / 4**")
+    st.markdown(f"## 🎯 Final Score: **{score} / 3**")
 
     # Time
     duration = int(time.time() - st.session_state.start_time)
